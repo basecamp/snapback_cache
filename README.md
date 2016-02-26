@@ -100,7 +100,8 @@ nextPageOffset was calculated because we had setup a "nextPageOffset" function o
 Installation
 ------------
 
-1) Add the snapback_cache.js to your javascript stack. 
+1) Add the snapback_cache.js to your javascript stack.
+ 
 2) Add a cache variable with the options set: 
 
 ```
