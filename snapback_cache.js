@@ -206,7 +206,7 @@ var SnapbackCache = (function(options) {
     var raw = sessionStorage.getItem("pageCache-dirty")
     if (raw) {
       var json = JSON.parse(raw)
-      return jQuery.map(dirties, function(value, key){
+      return jQuery.map(json, function(value, key){
         return key
       })
     } else {
@@ -262,4 +262,4 @@ var SnapbackCache = (function(options) {
     cachePage: cachePage,
     markDirty: markDirty
   }
-})
+});
