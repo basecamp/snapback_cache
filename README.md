@@ -36,6 +36,14 @@ This sounds easy, but there are certain things we bumped into that the library a
 
 ```
 var pageCache = PageCache({
+  options
+})
+```
+
+Here are some example options: 
+
+```
+var pageCache = PageCache({
   bodySelector: "mandatory selector of your infinite feed",
   finish: function() {
     optional method of something that needs to finish on your page before caching the page
@@ -47,7 +55,7 @@ var pageCache = PageCache({
     optional method to fetch fresh bits from your server you want to replace in the cache
   },  
   nextPageOffset: function(){
-    EndlessPage.offset;
+   optional method to fetch the current page your scrolled to. this is so you can track what page you should scroll next. see the page-cache:loaded event. 
   }
 ```
 
