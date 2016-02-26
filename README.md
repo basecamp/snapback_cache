@@ -32,7 +32,7 @@ Then the javascript library watches the load event of any pages being browsed. I
 This sounds easy, but there are certain things we bumped into that the library also helps with. Things like disabling autofocus events that mess up scrolling and making sure things in the cache can actually be more granularly ignored or even refreshed. 
 
 
-## Syntax and how to use it in
+## Syntax and how to use it
 
 var pageCache = PageCache({
   bodySelector: "mandatory selector of your infinite feed",
