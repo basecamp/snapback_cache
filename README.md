@@ -34,6 +34,7 @@ This sounds easy, but there are certain things we bumped into that the library a
 
 ## Syntax and how to use it
 
+```
 var pageCache = PageCache({
   bodySelector: "mandatory selector of your infinite feed",
   finish: function() {
@@ -45,6 +46,7 @@ var pageCache = PageCache({
   refreshItems: function(dirtyThings) {
     optional method to fetch fresh bits from your server you want to replace in the cache
   }
+```
 
 **bodySelector** is mandatory. It tells us what on the page you want to cache. 
 
