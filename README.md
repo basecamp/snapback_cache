@@ -45,6 +45,9 @@ var pageCache = PageCache({
   },
   refreshItems: function(dirtyThings) {
     optional method to fetch fresh bits from your server you want to replace in the cache
+  },  
+  nextPageOffset: function(){
+    EndlessPage.offset;
   }
 ```
 
