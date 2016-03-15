@@ -124,6 +124,6 @@ Credit
 A ton of thanks to everyone at Highrise for helping get this into our stack. Especially [Jon Phenow](https://github.com/jphenow) and [Grant Blakeman](https://github.com/gblakeman) for the edits and help getting it open sourced. 
 
 
-
-
-
+P.S.
+---------------
+You should [**follow us on Twitter: here**](http://twitter.com/highrise), or see how we can help you with contact management using [**Highrise**](http://highrisehq.com)  —  a handy tool to help you remove anxiety around tracking who to follow up with and what to do next.
