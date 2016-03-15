@@ -67,7 +67,7 @@ var snapbackCache = SnapbackCache({
 
 **removeAutofocus** is a function that removes any auto focus behavior from your page. autoFocus events can mess with the browsers ability to scroll to the right place. So we want to nip that in this function. In our case we have multiple autofocus things going on, so we clear all that up. 
 
-**refreshItems** is a function to help refresh anything that might have gone stale from the cache. You can use that in conjunction with a method available on pageCache called markDirty. 
+**refreshItems** is a function to help refresh anything that might have gone stale from the cache. You can use that in conjunction with a method available on snpachbackCache called markDirty. 
 
 So in our case, we cache a note or comment or email in our feed. But if someone at some point edits/deletes one of those notes, comments or emails, we have javascript call 
 
