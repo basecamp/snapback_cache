@@ -1,12 +1,12 @@
 Snapback Cache
 ===========
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/highrise">@highrise</a> Nice new feature with snapback. I&#39;m becoming a big fan of Highrise.</p>&mdash; Echo Design Group (@EchoDesignGrp) <a href="https://twitter.com/EchoDesignGrp/status/580408329530376192">March 24, 2015</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/highrise">**@highrise**</a> Nice new feature with snapback. I&#39;m becoming a big fan of Highrise.</p>&mdash; Echo Design Group (@EchoDesignGrp) <a href="https://twitter.com/EchoDesignGrp/status/580408329530376192">March 24, 2015</a></blockquote>
 
 
 Many apps today have some concept of an infinite scrolling feed: Facebook, Twitter, LinkedIn and many more. Almost all of them suffer from the same problem. If you click on something in the feed that brings you to a new page, when you hit the back button or try to return to that original feed, your place is lost. All the scrolling is gone. 
 
-At [Highrise](http://highrisehq.com) we had that same problem. So this is the library we use to fix that. We call it our Snapback Cache, and it's made a big improvement to how people can use infinite scroll in our app and still get a lot of work done without losing their place. 
+At [**Highrise**](http://highrisehq.com) we had that same problem. So this is the library we use to fix that. We call it our Snapback Cache, and it's made a big improvement to how people can use infinite scroll in our app and still get a lot of work done without losing their place. 
 
 Another great thing about this is it operates on the URL, so you can have multiple infinite scrolling feeds to cache. At Highrise we have a "main activity" and then activities for a Contact, etc. They each get their separate cache. To keep a manageable memory footprint for your browser, we keep 10 caches as a maximum. 
 
