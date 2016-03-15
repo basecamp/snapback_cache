@@ -112,7 +112,7 @@ var snapbackCache = SnapbackCache({
    })
 ```
 
-3) Call pageCsnapbackche.cacheCurrentPage() whenever you need to, and magically when people return to that url, the cache will do the rest. 
+3) Call snapbackCache.cacheCurrentPage() whenever you need to, and magically when people return to that url, the cache will do the rest. 
 
 
 Feedback
