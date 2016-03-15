@@ -1,7 +1,7 @@
 Snapback Cache
 ===========
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/highrise">**@highrise**</a> Nice new feature with snapback. I&#39;m becoming a big fan of Highrise.</p>&mdash; Echo Design Group (@EchoDesignGrp) <a href="https://twitter.com/EchoDesignGrp/status/580408329530376192">March 24, 2015</a></blockquote>
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/highrise">@highrise</a> Nice new feature with snapback. I&#39;m becoming a big fan of Highrise.</p>&mdash; Echo Design Group (@EchoDesignGrp) <a href="https://twitter.com/EchoDesignGrp/status/580408329530376192">March 24, 2015</a></blockquote>
 
 
 Many apps today have some concept of an infinite scrolling feed: Facebook, Twitter, LinkedIn and many more. Almost all of them suffer from the same problem. If you click on something in the feed that brings you to a new page, when you hit the back button or try to return to that original feed, your place is lost. All the scrolling is gone. 
