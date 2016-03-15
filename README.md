@@ -6,7 +6,7 @@ Snapback Cache
 
 Many apps today have some concept of an infinite scrolling feed: Facebook, Twitter, LinkedIn and many more. Almost all of them suffer from the same problem. If you click on something in the feed that brings you to a new page, when you hit the back button or try to return to that original feed, your place is lost. All the scrolling is gone. 
 
-At [Highrise](http://highrisehq.com) we had that same problem. So this is the library we use to fix that. We call it our Snapback Cache, and it's made a big improvement how people can use infinite scroll in our app and still get a lot of work done without losing their place. 
+At [Highrise](http://highrisehq.com) we had that same problem. So this is the library we use to fix that. We call it our Snapback Cache, and it's made a big improvement to how people can use infinite scroll in our app and still get a lot of work done without losing their place. 
 
 Another great thing about this is it operates on the URL, so you can have multiple infinite scrolling feeds to cache. At Highrise we have a "main activity" and then activities for a Contact, etc. They each get their separate cache. To keep a manageable memory footprint for your browser, we keep 10 caches as a maximum. 
 
@@ -17,13 +17,13 @@ Another great thing about this is it operates on the URL, so you can have multip
 Using this small javascript library, you hook it up to the click events on things in your infinite scrolling feed. For example: 
 
 ```
-var pageCache = PageCache({
+var snapbackCache = SnapbackCache({
      bodySelector: "#recordings"
  })
 
 jQuery(document).on("click", "body.recordings a",                     
     function(event){
-      pageCache.cachePage();
+      snapbackCache.cachePage();
     })
 ```
 
@@ -37,7 +37,7 @@ This sounds easy, but there are certain things we bumped into that the library a
 ## Syntax and how to use it
 
 ```
-var pageCache = PageCache({
+var snapbackCache = SnapbackCache({
   options
 })
 ```
@@ -45,7 +45,7 @@ var pageCache = PageCache({
 Here are some example options: 
 
 ```
-var pageCache = PageCache({
+var snapbackCache = SnapbackCache({
   bodySelector: "mandatory selector of your infinite feed",
   finish: function() {
     optional method of something that needs to finish on your page before caching the page
@@ -72,10 +72,10 @@ var pageCache = PageCache({
 So in our case, we cache a note or comment or email in our feed. But if someone at some point edits/deletes one of those notes, comments or emails, we have javascript call 
 
 ```
-pageCache.markDirty(id_of_dirty_thing); 
+snapbackCache.markDirty(id_of_dirty_thing); 
 ```
 
-Then when the pageCache replaces the cached contents it's saving for us, it makes sure to call the refreshItems function you specify along with an array of "dirty items" you can do something with. In our case, we take all those dirty ids, and issue an ajax call that does all the work to refresh bits of the cached page. 
+Then when the snapbackCache replaces the cached contents it's saving for us, it makes sure to call the refreshItems function you specify along with an array of "dirty items" you can do something with. In our case, we take all those dirty ids, and issue an ajax call that does all the work to refresh bits of the cached page. 
 
 **nextPageOffset** is a function that the Snapback cache can use to figure out what "page" your user is on. We take that page and store it along the cached contents of the page. That way when the cached page is restored you have the page number the user was on and get pick up infinite paging at the appropriate place. See the page-cache:loaded event below to do that.
 
@@ -84,12 +84,12 @@ Then when the pageCache replaces the cached contents it's saving for us, it make
 
 There are a couple of events we send out that are useful. 
 
-**page-cache:cached** is an event emitted as soon as the contents of the page have been cached into session storage
+**snapback-cache:cached** is an event emitted as soon as the contents of the page have been cached into session storage
 
-**page-cache:loaded** is an event emitted as soon as the contents of the page have been replaced. We use this at Highrise to set the appropriate offset for our infinite scrolling: 
+**snapback-cache:loaded** is an event emitted as soon as the contents of the page have been replaced. We use this at Highrise to set the appropriate offset for our infinite scrolling: 
 
 ```
-jQuery("#recordings").on("page-cache:loaded", function(event, cachedPage) {
+jQuery("#recordings").on("snapback-cache:loaded", function(event, cachedPage) {
   // sets the pager to page from the appropriate place
   EndlessPage.offset = cachedPage.nextPageOffset
 })
@@ -107,12 +107,12 @@ Installation
 2) Add a cache variable with the options set: 
 
 ```
-var pageCache = SnapbackCache({
+var snapbackCache = SnapbackCache({
      bodySelector: "#recordings",
    })
 ```
 
-3) Call pageCache.cacheCurrentPage() whenever you need to, and magically when people return to that url, the cache will do the rest. 
+3) Call pageCsnapbackche.cacheCurrentPage() whenever you need to, and magically when people return to that url, the cache will do the rest. 
 
 
 Feedback
