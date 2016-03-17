@@ -30,7 +30,7 @@ jQuery(document).on("click", "body.recordings a", function (e) {
 
 Now when people click the links inside our "recordings" container, the stuff inside the current recordings container is cached locally using the browser's session storage. 
 
-Then the javascript library watches the load event of any pages being browsed. If the library sees that that browser's URL is a url we've already cached, and it's not "too old" (15 minutes), we replace the contents of our container (`#recorindgs` in our example) with the cached version, and scroll the browser to the place where it had been cached. 
+Then the javascript library watches the load event of any pages being browsed. If the library sees that that browser's URL is a url we've already cached, and it's not "too old" (15 minutes), we replace the contents of our container (`#recordings` in our example) with the cached version, and scroll the browser to the place where it had been cached. 
 
 This sounds easy, but there are certain things we bumped into that the library also helps with. Things like disabling autofocus events that mess up scrolling and making sure things in the cache can actually be more granularly ignored or even refreshed. 
 
