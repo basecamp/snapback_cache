@@ -137,7 +137,6 @@ var SnapbackCache = (function(options) {
 
       // help to setup the next page of infinite scrolling
       if (typeof options.nextPageOffset === "function")
-        console.log("storing offset"); 
         cachedPage.nextPageOffset = options.nextPageOffset()
 
       setItem(document.location.href, cachedPage)
