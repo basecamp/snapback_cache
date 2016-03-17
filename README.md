@@ -8,7 +8,7 @@ Many apps today have some concept of an infinite scrolling feed: Facebook, Twitt
 
 At [**Highrise**](http://highrisehq.com) we had that same problem. So this is the library we use to fix that. We call it our Snapback Cache, and it's made a big improvement to how people can use infinite scroll in our app and still get a lot of work done without losing their place. 
 
-![](/demo.gif?raw=true)
+![](https://github.com/highrisehq/snapback_cache/blob/master/demo.gif?raw=true)
 
 Another great thing about this is it operates on the URL, so you can have multiple infinite scrolling feeds to cache. At Highrise we have a "main activity" and then activities for a Contact, etc. They each get their separate cache. To keep a manageable memory footprint for your browser, we keep 10 caches as a maximum. 
 
@@ -122,7 +122,7 @@ Feedback
 
 Credit
 --------
-A ton of thanks to everyone at Highrise for helping get this into our stack. Especially [Jon Phenow](https://github.com/jphenow) and [Grant Blakeman](https://github.com/gblakeman) for the edits and help getting it open sourced. 
+A ton of thanks to everyone at Highrise for helping get this into our stack. Especially [Jon Phenow](https://github.com/jphenow), [Grant Blakeman](https://github.com/gblakeman) and [Michael Dwan](https://github.com/michaeldwan) for the edits and help getting it open sourced. 
 
 
 P.S.
