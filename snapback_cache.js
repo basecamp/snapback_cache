@@ -92,10 +92,8 @@ var SnapbackCache = (function(options) {
   }
 
   var disableAutofocusIfReplacingCachedPage = function(){
-
     if(typeof options.removeAutofocus === "function"){
-      var cachedPage = getItem(document.location.href)
-      if(cachedPage && cachedPage.cachedAt > (new Date().getTime()-900000)){
+      if(willUseCacheOnThisPage()){
         options.removeAutofocus()
       }
     }
@@ -139,6 +137,7 @@ var SnapbackCache = (function(options) {
 
       // help to setup the next page of infinite scrolling
       if (typeof options.nextPageOffset === "function")
+        console.log("storing offset"); 
         cachedPage.nextPageOffset = options.nextPageOffset()
 
       setItem(document.location.href, cachedPage)
@@ -152,17 +151,10 @@ var SnapbackCache = (function(options) {
   }
 
   var loadFromCache = function(noCacheCallback){
-    if (!supported()){
-      if(noCacheCallback){
-        noCacheCallback()
-      }
-      return;
-    }
-
-    var cachedPage = getItem(document.location.href)
-
     // Check if there is a cache and if its less than 15 minutes old
-    if(cachedPage && cachedPage.cachedAt > (new Date().getTime()-900000)){
+    if(willUseCacheOnThisPage()){
+      var cachedPage = getItem(document.location.href)
+
       // replace the content and scroll
       jQuery(options.bodySelector).html(cachedPage.body)
 
@@ -194,6 +186,9 @@ var SnapbackCache = (function(options) {
     else{
       if(noCacheCallback){
         noCacheCallback()
+      }
+      else{
+        return
       }
     }
   }
@@ -246,6 +241,22 @@ var SnapbackCache = (function(options) {
     }
   }
 
+  var willUseCacheOnThisPage = function(){
+    if (!supported()){
+      return false;
+    }
+
+    var cachedPage = getItem(document.location.href)
+
+    // Check if there is a cache and if its less than 15 minutes old
+    if(cachedPage && cachedPage.cachedAt > (new Date().getTime()-900000)){
+      return true; 
+    }
+    else{
+      return false;
+    }
+  }
+
   jQuery(document).ready(function(){
     disableAutofocusIfReplacingCachedPage()
   });
@@ -260,6 +271,7 @@ var SnapbackCache = (function(options) {
     remove: removeItem,
     loadFromCache: loadFromCache,
     cachePage: cachePage,
-    markDirty: markDirty
+    markDirty: markDirty, 
+    willUseCacheOnThisPage: willUseCacheOnThisPage
   }
 });
