@@ -23,7 +23,7 @@ var snapbackCache = SnapbackCache({
   bodySelector: "#recordings"
 });
 
-jQuery(document).on("click", "body.recordings a", function (e) {
+jQuery(document).on("click", "body#recordings a", function (e) {
  snapbackCache.cachePage();
 });
 ```
