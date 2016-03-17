@@ -16,49 +16,49 @@ Another great thing about this is it operates on the URL, so you can have multip
 
 Using this small javascript library, you hook it up to the click events on things in your infinite scrolling feed. For example: 
 
-```
+```javascript
 var snapbackCache = SnapbackCache({
-     bodySelector: "#recordings"
- })
+  bodySelector: "#recordings"
+});
 
-jQuery(document).on("click", "body.recordings a",                     
-    function(event){
-      snapbackCache.cachePage();
-    })
+jQuery(document).on("click", "body.recordings a", function (e) {
+ snapbackCache.cachePage();
+});
 ```
 
 Now when people click the links inside our "recordings" container, the stuff inside the current recordings container is cached locally using the browser's session storage. 
 
-Then the javascript library watches the load event of any pages being browsed. If the library sees that that browser's URL is a url we've already cached, and it's not "too old" (15 minutes), we replace the contents of our container (#recorindgs in our example) with the cached version, and scroll the browser to the place where it had been cached. 
+Then the javascript library watches the load event of any pages being browsed. If the library sees that that browser's URL is a url we've already cached, and it's not "too old" (15 minutes), we replace the contents of our container (`#recorindgs` in our example) with the cached version, and scroll the browser to the place where it had been cached. 
 
 This sounds easy, but there are certain things we bumped into that the library also helps with. Things like disabling autofocus events that mess up scrolling and making sure things in the cache can actually be more granularly ignored or even refreshed. 
 
 
 ## Syntax and how to use it
 
-```
+```javascript
 var snapbackCache = SnapbackCache({
   options
-})
+});
 ```
 
 Here are some example options: 
 
-```
+```javascript
 var snapbackCache = SnapbackCache({
   bodySelector: "mandatory selector of your infinite feed",
-  finish: function() {
+  finish: function () {
     optional method of something that needs to finish on your page before caching the page
   },
-  removeAutofocus: function(){
+  removeAutofocus: function () {
     optional method to kill autofocusing which screws with scrolling the page 
   },
-  refreshItems: function(dirtyThings) {
+  refreshItems: function (dirtyThings) {
     optional method to fetch fresh bits from your server you want to replace in the cache
   },  
-  nextPageOffset: function(){
+  nextPageOffset: function () {
    optional method to fetch the current page your scrolled to. this is so you can track what page you should scroll next. see the page-cache:loaded event. 
   }
+});
 ```
 
 **bodySelector** is mandatory. It tells us what on the page you want to cache. 
@@ -67,17 +67,17 @@ var snapbackCache = SnapbackCache({
 
 **removeAutofocus** is a function that removes any auto focus behavior from your page. autoFocus events can mess with the browsers ability to scroll to the right place. So we want to nip that in this function. In our case we have multiple autofocus things going on, so we clear all that up. 
 
-**refreshItems** is a function to help refresh anything that might have gone stale from the cache. You can use that in conjunction with a method available on snpachbackCache called markDirty. 
+**refreshItems** is a function to help refresh anything that might have gone stale from the cache. You can use that in conjunction with a method available on snpachbackCache called `markDirty`. 
 
 So in our case, we cache a note or comment or email in our feed. But if someone at some point edits/deletes one of those notes, comments or emails, we have javascript call 
 
-```
+```javascript
 snapbackCache.markDirty(id_of_dirty_thing); 
 ```
 
-Then when the snapbackCache replaces the cached contents it's saving for us, it makes sure to call the refreshItems function you specify along with an array of "dirty items" you can do something with. In our case, we take all those dirty ids, and issue an ajax call that does all the work to refresh bits of the cached page. 
+Then when the snapbackCache replaces the cached contents it's saving for us, it makes sure to call the `refreshItems` function you specify along with an array of "dirty items" you can do something with. In our case, we take all those dirty ids, and issue an ajax call that does all the work to refresh bits of the cached page. 
 
-**nextPageOffset** is a function that the Snapback cache can use to figure out what "page" your user is on. We take that page and store it along the cached contents of the page. That way when the cached page is restored you have the page number the user was on and get pick up infinite paging at the appropriate place. See the page-cache:loaded event below to do that.
+**nextPageOffset** is a function that the Snapback cache can use to figure out what "page" your user is on. We take that page and store it along the cached contents of the page. That way when the cached page is restored you have the page number the user was on and get pick up infinite paging at the appropriate place. See the `page-cache:loaded` event below to do that.
 
 
 ## Events
@@ -88,31 +88,30 @@ There are a couple of events we send out that are useful.
 
 **snapback-cache:loaded** is an event emitted as soon as the contents of the page have been replaced. We use this at Highrise to set the appropriate offset for our infinite scrolling: 
 
-```
-jQuery("#recordings").on("snapback-cache:loaded", function(event, cachedPage) {
+```javascript
+jQuery("#recordings").on("snapback-cache:loaded", function(e, cachedPage) {
   // sets the pager to page from the appropriate place
   EndlessPage.offset = cachedPage.nextPageOffset
-})
+});
 ```
 
-nextPageOffset was calculated because we had setup a "nextPageOffset" function on the page cache. 
-
+`nextPageOffset` was calculated because we had setup a "nextPageOffset" function on the page cache. 
 
 
 Installation
 ------------
 
-1) Add the snapback_cache.js to your javascript stack.
+1) Add the `snapback_cache.js` to your javascript stack.
  
 2) Add a cache variable with the options set: 
 
-```
+```javascript
 var snapbackCache = SnapbackCache({
-     bodySelector: "#recordings",
-   })
+  bodySelector: "#recordings",
+});
 ```
 
-3) Call snapbackCache.cacheCurrentPage() whenever you need to, and magically when people return to that url, the cache will do the rest. 
+3) Call `snapbackCache.cacheCurrentPage()` whenever you need to, and magically when people return to that url, the cache will do the rest. 
 
 
 Feedback
