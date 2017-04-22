@@ -260,9 +260,18 @@ var SnapbackCache = (function(options) {
     disableAutofocusIfReplacingCachedPage()
   });
 
-  jQuery(window).load(function(){
+  
+
+  // .load, .unload, and .error, deprecated since jQuery 1.8, are no more. Use .on() to register listeners. reference (http://stackoverflow.com/a/37915907)
+
+  // jQuery(window).load(function(){
+  //   loadFromCache()
+  // });
+
+
+  $(window).on('load', function() {
     loadFromCache()
-  });
+   });
 
   return {
     enable: enable,
