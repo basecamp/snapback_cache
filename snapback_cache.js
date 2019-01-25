@@ -235,7 +235,7 @@ var SnapbackCache = (function(options) {
           delete storageHash[key];
         }
 
-        sessionStorage.setItem(namespace, JSON.stringify(storageHash));
+        sessionStorage.setItem("pageCache", JSON.stringify(storageHash));
       }
     }
   }
